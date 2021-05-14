@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: styled_with_theme
+# uuid: yc-fe-styled_with_theme
+# key: styledC
+# condition: t
+# --
+
+export const Styled${1:Component} = styled${2:.div}(
+    (({ ${3:theme}} ) => \`
+        $0
+    \`
+);

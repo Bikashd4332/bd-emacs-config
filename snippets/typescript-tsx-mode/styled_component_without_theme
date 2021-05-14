@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: styled_component_without_theme
+# uuid: yc-fe-styled_without_theme
+# key: styledCT
+# condition: t
+# --
+export const Styled${1:Component} = styled${2:.div}\`
+    $0
+\`

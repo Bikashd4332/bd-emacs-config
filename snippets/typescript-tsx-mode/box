@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: <Box>
+# uuid: yc-fe-box
+# key: box
+# condition: t
+# --
+
+<Box $1 >
+     $0
+</Box>

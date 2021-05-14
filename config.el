@@ -21,9 +21,9 @@
 (display-time-mode 1)
 (display-battery-mode 1)
 
-(map!  "C-x v c" #'vc-find-conflicted-file)
-(map!  "M-s n" #'isearch-repeat-forward)
-(map!  "M-s p" #'isearch-repeat-backward)
+(map! :g  "C-x v c" #'vc-find-conflicted-file)
+(map! :g  "M-s n" #'isearch-repeat-forward)
+(map! :g  "M-s p" #'isearch-repeat-backward)
 
 (setq browse-url-browser-function 'eww-browse-url)
 
@@ -182,13 +182,14 @@
 (setq spotify-oauth2-client-secret "0a8c28bf834a4830b8afbd37f5a1ddc5")
 (setq spotify-oauth2-client-id "7b61fb87fa1843f2897641fdd66aed83")
 
-(map! :after neotree-mode
-      :leader
-      :n "z s" #'neotree-enter-vertical-split
-      :n "z v" #'neotree-enter-horizontal-split)
+(evil-define-key 'normal neotree-mode-map
+        (kbd "|") #'neotree-enter-vertical-split
+        (kbd "-") #'neotree-enter-horizontal-split)
 
 (map! :leader
-      :n "w N" #'+hydra/window-nav/body)
+      :n (kbd "w N") #'+hydra/window-nav/body)
 
-(add-hook 'writeroom-mode-enable-hook #'menu-bar--display-line-numbers-mode-relative)
-(add-hook 'writeroom-mode-disable-hook #'menu-bar--display-line-numbers-mode-none)
+    (add-hook 'writeroom-mode-enable-hook #'menu-bar--display-line-numbers-mode-relative)
+    (add-hook 'writeroom-mode-disable-hook #'menu-bar--display-line-numbers-mode-none)
+
+(map! map: Man-mode-map :desc "Goto a section quickly" :n  (kbd "g t") #'Man-goto-section)

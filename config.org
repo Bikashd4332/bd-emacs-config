@@ -55,9 +55,9 @@ mac-function-modifier is set to  '(button 2)
 #+end_src
 ** ADDING MY KEYBINDINGS
 #+begin_src emacs-lisp
-(map!  "C-x v c" #'vc-find-conflicted-file)
-(map!  "M-s n" #'isearch-repeat-forward)
-(map!  "M-s p" #'isearch-repeat-backward)
+(map! :g  "C-x v c" #'vc-find-conflicted-file)
+(map! :g  "M-s n" #'isearch-repeat-forward)
+(map! :g  "M-s p" #'isearch-repeat-backward)
 #+end_src
 ** BROWSER (eww)
 Set urls to open in a specific browser.
@@ -276,18 +276,21 @@ If there is more than one, they won't work right.
 #+end_src
 ** NEOTREE CONFIGURATION
 #+begin_src emacs-lisp
-(map! :after neotree-mode
-      :leader
-      :n "z s" #'neotree-enter-vertical-split
-      :n "z v" #'neotree-enter-horizontal-split)
+(evil-define-key 'normal neotree-mode-map
+        (kbd "|") #'neotree-enter-vertical-split
+        (kbd "-") #'neotree-enter-horizontal-split)
 #+end_src
 ** HYDRA CONFIGURATION
 #+begin_src emacs-lisp
 (map! :leader
-      :n "w N" #'+hydra/window-nav/body)
+      :n (kbd "w N") #'+hydra/window-nav/body)
 #+end_src
 ** ENABLE RELATIVE LINE NUMBERING ON ZEN MODE.
 #+begin_src emacs-lisp
     (add-hook 'writeroom-mode-enable-hook #'menu-bar--display-line-numbers-mode-relative)
     (add-hook 'writeroom-mode-disable-hook #'menu-bar--display-line-numbers-mode-none)
+#+end_src
+** ADDING SOME HANDY SHORTCUTS
+#+begin_src emacs-lisp
+(map! map: Man-mode-map :desc "Goto a section quickly" :n  (kbd "g t") #'Man-goto-section)
 #+end_src

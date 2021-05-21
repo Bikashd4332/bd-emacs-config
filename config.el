@@ -32,13 +32,13 @@
   (set-variable 'split-width-threshold 40 t)) ; make this as low as needed
 (add-hook 'markdown-mode-hook 'prefer-horizontal-split)
 
-(evil-define-key 'normal peep-dired-mode-map (kbd "j") 'peep-dired-next-file)
-(map!
-  (:after dired
-    (:map dired-mode-map
-     "C-x i" #'peep-dired
-     )))
-(add-hook 'peep-dired-hook 'evil-normalize-keymaps)
+;; (map! :n peep-dired-mode-map  "j" 'peep-dired-next-file)
+;; (map!
+;;   (:after dired
+;;     (:map dired-mode-map
+;;      "C-x i" #'peep-dired
+;;      )))
+;; (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 
 ;; (use-package emms
 ;;   :ensure t
@@ -81,27 +81,6 @@
      ("https://betanews.com/feed" betanews linux)
      ("http://lxer.com/module/newswire/headlines.rss" lxer linux)
      ("https://distrowatch.com/news/dwd.xml" distrowatch linux)))))
-
-(custom-set-faces
- )
-
-(setq org-gcal-client-id "928920761867-j314hfqcd7qoqgdfnan9iiecal6p1cos.apps.googleusercontent.com"
-      org-gcal-client-secret "4WFGzA_pqMIQwZIiQN6aNJdC"
-      org-gcal-file-alist '(("bikashd@ivypods.com" .  "~/Documents/org/schedule.org")
-                            ("bikash@ivypods.com" .  "~/Documents/org/task.org")))
-
-(setq math-additional-units '(
-  (GiB "1024 * MiB" "Giga Byte")
-
-  (MiB "1024 * KiB" "Mega Byte")
-  (KiB "1024 * B" "Kilo Byte")
-  (B nil "Byte")
-  (Gib "1024 * Mib" "Giga Bit")
-  (Mib "1024 * Kib" "Mega Bit")
-  (Kib "1024 * b" "Kilo Bit")
-  (b "B / 8" "Bit")))
-;; This resets calc's cache
-(setq math-units-table nil)
 
 ; adding global-prettier-mode minor mode to all the major mode to add the support for prettier.
 (add-hook 'after-init-hook #'global-prettier-mode)
@@ -182,14 +161,16 @@
 (setq spotify-oauth2-client-secret "0a8c28bf834a4830b8afbd37f5a1ddc5")
 (setq spotify-oauth2-client-id "7b61fb87fa1843f2897641fdd66aed83")
 
-(evil-define-key 'normal neotree-mode-map
-        (kbd "|") #'neotree-enter-vertical-split
-        (kbd "-") #'neotree-enter-horizontal-split)
+(map!  :map neotree-mode-map
+       :n (kbd "|") #'neotree-enter-vertical-split
+       :n (kbd "-") #'neotree-enter-horizontal-split)
 
 (map! :leader
       :n (kbd "w N") #'+hydra/window-nav/body)
 
-    (add-hook 'writeroom-mode-enable-hook #'menu-bar--display-line-numbers-mode-relative)
-    (add-hook 'writeroom-mode-disable-hook #'menu-bar--display-line-numbers-mode-none)
+(add-hook 'writeroom-mode-enable-hook #'menu-bar--display-line-numbers-mode-relative)
+(add-hook 'writeroom-mode-disable-hook #'menu-bar--display-line-numbers-mode-none)
 
-(map! map: Man-mode-map :desc "Goto a section quickly" :n  (kbd "g t") #'Man-goto-section)
+(map! :map Man-mode-map :desc "Goto a section quickly" :n  (kbd "g t") #'Man-goto-section)
+;; had to do with this way, map! kept throwing error for some reason.
+(evil-define-key 'normal 'global (kbd "SPC m z") #'cheat-sh)

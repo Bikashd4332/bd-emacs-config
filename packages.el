@@ -122,5 +122,8 @@
 (package! emacs-lorem-ipsum
   :recipe (:host github :repo "jschaf/emacs-lorem-ipsum"))
 
+(package! cheat-sh.el
+  :recipe (:host github :repo "davep/cheat-sh.el"))
+
 ;; (package! magit-gh-pulls
 ;;   :recipe (:host github :repo "sigma/magit-gh-pulls"))

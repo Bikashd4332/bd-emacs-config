@@ -2,7 +2,7 @@
 #+AUTHOR: Bikash Das (BD)
 #+STARTUP: showeverything
 
-** FONTS
+* FONTS
 Doom exposes five (optional) variables for controlling fonts in Doom. Here
 are the three important ones:
 
@@ -18,7 +18,7 @@ font string. You generally only need these two:
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 15 :weight 'bold))
 #+end_src
 
-** IN MAC CONTROL, META IS MESSED UP.
+* IN MAC CONTROL, META IS MESSED UP.
 mac-control-modifier is set to  'control
 mac-option-modifier is set to  'meta
 mac-function-modifier is set to  '(button 2)
@@ -32,40 +32,40 @@ mac-function-modifier is set to  '(button 2)
 (setq-default mac-right-option-modifier 'meta)
 #+end_src
 
-** DOOM THEME
+* DOOM THEME
 #+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-fairy-floss)
 #+END_SRC
-** ORG MODE
+* ORG MODE
 #+BEGIN_SRC emacs-lisp
 (setq org-directory "~/Documents/org/")
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 #+END_SRC
 
-** LINE SETTINGS
+* LINE SETTINGS
  #+BEGIN_SRC emacs-lisp
 (setq display-line-numbers nil)
 (setq display-line-numbers-type nil)
 #+END_SRC
-** ADD TIME AND BATTERY TO MODELINE
+* ADD TIME AND BATTERY TO MODELINE
 #+begin_src emacs-lisp
 (display-time-mode 1)
 (display-battery-mode 1)
 #+end_src
-** ADDING MY KEYBINDINGS
+* ADDING MY KEYBINDINGS
 #+begin_src emacs-lisp
 (map! :g  "C-x v c" #'vc-find-conflicted-file)
 (map! :g  "M-s n" #'isearch-repeat-forward)
 (map! :g  "M-s p" #'isearch-repeat-backward)
 #+end_src
-** BROWSER (eww)
+* BROWSER (eww)
 Set urls to open in a specific browser.
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'eww-browse-url)
 #+END_SRC
 
-** SPLITS
+* SPLITS
 Force splits to open on the right
 #+BEGIN_SRC emacs-lisp
 (defun prefer-horizontal-split ()
@@ -74,7 +74,7 @@ Force splits to open on the right
 (add-hook 'markdown-mode-hook 'prefer-horizontal-split)
 #+END_SRC
 
-** FILE MANAGER (dired)
+* FILE MANAGER (dired)
 Image previews in dired
 #+BEGIN_SRC emacs-lisp
 ;; (map! :n peep-dired-mode-map  "j" 'peep-dired-next-file)
@@ -86,7 +86,7 @@ Image previews in dired
 ;; (add-hook 'peep-dired-hook 'evil-normalize-keymaps)
 #+END_SRC
 
-** AUDIO PLAYER (emms)
+* AUDIO PLAYER (emms)
 #+BEGIN_SRC emacs-lisp
 ;; (use-package emms
 ;;   :ensure t
@@ -108,7 +108,7 @@ Image previews in dired
 ;;   (emms-playing-time 1))
 #+END_SRC
 
-** MASTODON CLIENT (mastodon)
+* MASTODON CLIENT (mastodon)
 #+BEGIN_SRC emacs-lisp
 (setq mastodon-instance-url "https://mastodon.technology")
 #+END_SRC
@@ -144,26 +144,26 @@ If you edit it by hand, you could mess it up, so be careful.
 (setq math-units-table nil)
 #+END_SRC
 
-** PRETTIER CODE FORMATER
+* PRETTIER CODE FORMATER
 #+begin_src emacs-lisp
 ; adding global-prettier-mode minor mode to all the major mode to add the support for prettier.
 (add-hook 'after-init-hook #'global-prettier-mode)
 #+end_src
 
-** MAKING EMACS FASTER
+* MAKING EMACS FASTER
 #+begin_src emacs-lisp
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (setq-default display-line-numbers nil)
 #+end_src
-** SETTING MY PERSONALA DICTIONARY UP.
+* SETTING MY PERSONALA DICTIONARY UP.
 #+begin_src emacs-lisp
 (setq ispell-personal-dictionary "/Users/bikashdas/.ispell")
 #+end_src
-** SETTING DIARY UP
+* SETTING DIARY UP
 #+begin_src emacs-lisp
 (setq-default diary-file "~/diary")
 #+end_src
-** SETTING SLACK UP
+* SETTING SLACK UP
 #+begin_src emacs-lisp
 
 (use-package! slack
@@ -208,7 +208,7 @@ If you edit it by hand, you could mess it up, so be careful.
   (setq alert-default-style 'notifier))
 
 #+end_src
-** SETTING UP CALENDAR TO SHOW ALL EVENTS.
+* SETTING UP CALENDAR TO SHOW ALL EVENTS.
  #+begin_src emacs-lisp
 (defun my-open-calendar ()
   (interactive)
@@ -221,14 +221,14 @@ If you edit it by hand, you could mess it up, so be careful.
     (cfw:ical-create-source "gcal" "https://..../basic.ics" "IndianRed") ; google calendar ICS
    )))
  #+end_src
-** ADDING SOME EXTRA LOOKUP PROVIDERS.
+* ADDING SOME EXTRA LOOKUP PROVIDERS.
 #+begin_src emacs-lisp
 (setq +lookup-provider-url-alist (append  +lookup-provider-url-alist '(("Thesaurus.com" "https://thesaurus.com/browse/%s")
                                                                        ("MDN" "https://developer.mozilla.org/en-US/search?q=%s")
                                                                        ("DistroWatch" "https://www.distroWatch.com/table.php?distribution=%s"))))
 #+end_src
 
-** ENABLE MINOR MODE ON SOME SPECIFIC FILES.
+* ENABLE MINOR MODE ON SOME SPECIFIC FILES.
 #+begin_src emacs-lisp
 ;; add a particular minor mode to a file on open
 (defun add-rainbow-mode-if-theme-file ()
@@ -238,32 +238,32 @@ If you edit it by hand, you could mess it up, so be careful.
 
 (add-hook! 'typescript-mode-hook #'add-rainbow-mode-if-theme-file)
 #+end_src
-** SET SAFARI AS THE DEFAULT SECONDARY BRWOSER
+* SET SAFARI AS THE DEFAULT SECONDARY BRWOSER
 #+begin_src emacs-lisp
 (setq browse-url-secondary-browser-function 'browse-url-default-macosx-browser)
 #+end_src
-** CONFIGURING SPOTIFY IN EMACS
+* CONFIGURING SPOTIFY IN EMACS
 #+begin_src emacs-lisp
 (setq spotify-oauth2-client-secret "0a8c28bf834a4830b8afbd37f5a1ddc5")
 (setq spotify-oauth2-client-id "7b61fb87fa1843f2897641fdd66aed83")
 #+end_src
-** NEOTREE CONFIGURATION
+* NEOTREE CONFIGURATION
 #+begin_src emacs-lisp
 (map!  :map neotree-mode-map
        :n (kbd "|") #'neotree-enter-vertical-split
        :n (kbd "-") #'neotree-enter-horizontal-split)
 #+end_src
-** HYDRA CONFIGURATION
+* HYDRA CONFIGURATION
 #+begin_src emacs-lisp
 (map! :leader
       :n (kbd "w N") #'+hydra/window-nav/body)
 #+end_src
-** ENABLE RELATIVE LINE NUMBERING ON ZEN MODE.
+* ENABLE RELATIVE LINE NUMBERING ON ZEN MODE.
 #+begin_src emacs-lisp
     (add-hook 'writeroom-mode-enable-hook #'menu-bar--display-line-numbers-mode-relative)
     (add-hook 'writeroom-mode-disable-hook #'menu-bar--display-line-numbers-mode-none)
 #+end_src
-** ADDING SOME HANDY SHORTCUTS
+* ADDING SOME HANDY SHORTCUTS
 #+begin_src emacs-lisp
 (map! :map Man-mode-map :desc "Goto a section quickly" :n  (kbd "g t") #'Man-goto-section)
 ;; had to do with this way, map! kept throwing error for some reason.

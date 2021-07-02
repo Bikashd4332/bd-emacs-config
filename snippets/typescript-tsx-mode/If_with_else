@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: ife
+# uuid: yc-ife
+# key: ife
+# condition: t
+# --
+
+<If condition={$1} then={$2} else={$3} />
+$0

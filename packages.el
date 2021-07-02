@@ -125,5 +125,8 @@
 (package! cheat-sh.el
   :recipe (:host github :repo "davep/cheat-sh.el"))
 
+(package! tldr.el
+  :recipe (:host github :repo "kuanyui/tldr.el"))
+
 ;; (package! magit-gh-pulls
 ;;   :recipe (:host github :repo "sigma/magit-gh-pulls"))
